@@ -3,44 +3,40 @@ https://readme42.com
 -->
 
 
-[![](https://img.shields.io/pypi/v/django-configurations-templates.svg?maxAge=3600)](https://pypi.org/project/django-configurations-templates/)
+[![](https://img.shields.io/pypi/v/django-configurations-middleware.svg?maxAge=3600)](https://pypi.org/project/django-configurations-middleware/)
 [![](https://img.shields.io/badge/License-Unlicense-blue.svg?longCache=True)](https://unlicense.org/)
-[![](https://github.com/andrewp-as-is/django-configurations-templates.py/workflows/tests42/badge.svg)](https://github.com/andrewp-as-is/django-configurations-templates.py/actions)
+[![](https://github.com/andrewp-as-is/django-configurations-middleware.py/workflows/tests42/badge.svg)](https://github.com/andrewp-as-is/django-configurations-middleware.py/actions)
 
 ### Installation
 ```bash
-$ [sudo] pip install django-configurations-templates
+$ [sudo] pip install django-configurations-middleware
 ```
 
 #### Features
-key | default value | env
+key  | default value  | env
 -|-|-
-`TEMPLATES_BACKEND` | `django.template.backends.django.DjangoTemplates` | `DJANGO_TEMPLATES_BACKEND`
-`TEMPLATES_DIRS` | `os.path.join(BASE_DIR,'templates')` | `DJANGO_TEMPLATES_DIRS`
-`TEMPLATES_APP_DIRS` | `True` | `('yes', 'y', 'true', '1')`
-`TEMPLATES_OPTIONS` | |
-`TEMPLATES_CONTEXT_PROCESSORS` | `[]`
-`TEMPLATES_CONTEXT_PROCESSORS_FILE` | `None` | `DJANGO_TEMPLATES_CONTEXT_PROCESSORS_FILE`
-`TEMPLATES_LOADERS` | `[]` |
+`MIDDLEWARE_FILE` | `None` | `DJANGO_MIDDLEWARE_FILE`
+`MIDDLEWARE_FILES` | `None` | `DJANGO_MIDDLEWARE_FILES`
 
 ##### `settings.py`
 ```python
-from django_configurations_templates import TemplatesConfiguration
+from configurations import Configuration
+from django_configurations_middleware import MiddlewareMixin
 
-class Base(TemplatesConfiguration,...):
-    ...
+class Base(MiddlewareMixin,Configuration):
+    MIDDLEWARE_FILE = 'middleware.txt'
+
 ```
 
+example #2:
 ```python
-class Base(TemplatesConfiguration,...):
-    TEMPLATES_CONTEXT_PROCESSORS = [
-        'django.template.context_processors.request'
-    ]
+class Base(MiddlewareMixin,Configuration):
+    MIDDLEWARE_FILES = ['middleware1.txt','middleware2.txt']
 ```
 
-```python
-class Base(TemplatesConfiguration,...):
-    TEMPLATES_CONTEXT_PROCESSORS_FILE='context_processors.txt'
+example #3:
+```bash
+$ export DJANGO_MIDDLEWARE_FILE=middleware.txt
 ```
 
 #### Links
