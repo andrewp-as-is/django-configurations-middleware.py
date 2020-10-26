@@ -8,6 +8,7 @@ def getlines(path):
 
 
 class MiddlewareMixin:
+    MIDDLEWARE = values.ListValue([])
     MIDDLEWARE_FILE = values.Value(None)
     MIDDLEWARE_FILES = values.ListValue([])
 

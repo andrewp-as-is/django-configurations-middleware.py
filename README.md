@@ -15,8 +15,9 @@ $ [sudo] pip install django-configurations-middleware
 #### Features
 key  | default value  | env
 -|-|-
+`MIDDLEWARE` | `[]` | `DJANGO_MIDDLEWARE`
 `MIDDLEWARE_FILE` | `None` | `DJANGO_MIDDLEWARE_FILE`
-`MIDDLEWARE_FILES` | `None` | `DJANGO_MIDDLEWARE_FILES`
+`MIDDLEWARE_FILES` | `[]` | `DJANGO_MIDDLEWARE_FILES`
 
 ##### `settings.py`
 ```python
